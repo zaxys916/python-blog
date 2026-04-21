@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "astro-compress": "^0.4.0"
+    "astro-compress": "^0.3.2"
   },
   "overrides": {
     "@types/react": "~18.2.0",
