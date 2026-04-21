@@ -61,50 +61,20 @@ if (existing) {
     </article>
 </Layout>
 
+<!-- 正确的表单提交方式 -->
 <script>
 document.getElementById('post-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  
+  // ✅ 调用后端 API，而不是直接 fs.writeFile
+  const res = await fetch('/api/create', {
+    method: 'POST',
+    body: formData
+  });
 
-    const data = {
-        title: document.getElementById('title').value,
-        slug: document.getElementById('slug').value,
-        date: document.getElementById('date').value,
-        content: document.getElementById('content').value
-    };
-
-    try {
-        // 创建目录和文件
-        const fs = await import('fs');
-        const path = await import('path');
-
-        const blogPath = './src/content/blog';
-        const fullPath = path.join(blogPath, data.slug);
-
-        if (!fs.existsSync(fullPath)) {
-            fs.mkdirSync(fullPath, { recursive: true });
-        }
-
-        // 创建 index.md
-        fs.writeFileSync(
-            path.join(fullPath, 'index.md'),
-            `---\ntitle: ${data.title}\nslug: ${data.slug}\ndate: ${data.date}\ntags: []\n---\n\n${data.content}\n`
-        );
-
-        // 创建 _data.json
-        fs.writeFileSync(
-            path.join(fullPath, '_data.json'),
-            JSON.stringify({
-                title: data.title,
-                slug: data.slug,
-                date: data.date,
-                tags: []
-            }, null, 2)
-        );
-
-        alert('✅ 文章发布成功！请运行 `npm run build` 构建博客。');
-        window.location.href = '/blog';
-    } catch (error) {
-        alert('❌ 发布失败：' + error.message);
-    }
+  if (res.ok) {
+    window.location.href = '/blog';
+  }
 });
 </script>
