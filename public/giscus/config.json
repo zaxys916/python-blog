@@ -1,0 +1,9 @@
+{
+  "repo": "your-username",
+  "repoId": "your-repository-id",
+  "category": "Announcements",
+  "categoryId": "DIC_kwDOexample123456",
+  "mapping": "pathname",
+  "reactionsEnabled": "1",
+  "themeData": "light_high_contrast"
+}

@@ -1,0 +1,78 @@
+---
+import Footer from '../components/Footer.astro';
+
+const title = Astro.props.title || 'Python 学习笔记';
+const description = Astro.props.description || '记录 Python 学习过程中的技术与思考';
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+    {Astro.props.description && <meta name="description" content={description} />}
+    
+    <style>
+        /* 全局样式 - 替代 body 的 inline style */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        /* 容器样式 - 替代 div 的 inline style */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        /* 头部样式 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        /* 导航样式 */
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+        nav a {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        nav a:first-child {
+            color: #666;
+            background: #e8f4f8;
+        }
+        nav a:last-child {
+            color: #fff;
+            background: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Python 学习笔记</h1>
+            <nav>
+                <a href="/blog">博客列表</a>
+                <a href="/posts/create">发布文章</a>
+            </nav>
+        </header>
+
+        {Astro.slots.default}
+
+        <Footer />
+    </div>
+</body>
+</html>
