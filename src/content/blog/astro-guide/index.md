@@ -2,7 +2,7 @@
 title: Astro 框架指南
 slug: astro-guide
 date: 2026-04-21
-tags: [Astro, Web 开发，框架]
+tags: ["Astro", "Web 开发", "框架"]
 ---
 
 # Astro 框架指南

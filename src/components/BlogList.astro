@@ -3,19 +3,19 @@ import Article from '../layouts/ArticleLayout.astro';
 import { getCollection } from 'astro:content';
 const posts = await getCollection('blog');
 posts.sort((a,b) => {
-    const [aDate] = a.data.date ? a.data.date.split('-') : ['0', '0'];
-    const [bDate] = b.data.date ? b.data.date.split('-') : ['0', '0'];
+    const aDate = a.data.date ? a.data.date.toISOString().split('T')[0] : '0';
+    const bDate = b.data.date ? b.data.date.toISOString().split('T')[0] : '0';
     return bDate.localeCompare(aDate);
 });
 ---
 
 <div style="display:grid;gap:2rem;margin-bottom:3rem">
     {posts.map(post => (
-        <Article {...post} >
-            <a href={post.url} style="text-decoration:none;color:#2980b9;font-weight:600;display:block;">
-                → {post.title}
+        <Article title={post.data.title} date={post.data.date} >
+            <a href={`/blog/${post.id}`} style="text-decoration:none;color:#2980b9;font-weight:600;display:block;">
+                → {post.data.title}
             </a>
-            <time datetime={post.date.toISOString()} style="color:#999;font-size:0.85rem">{post.date.toLocaleDateString('zh-CN')}</time>
+            <time datetime={post.data.date.toISOString()} style="color:#999;font-size:0.85rem">{post.data.date.toLocaleDateString('zh-CN')}</time>
         </Article>
     ))}
 </div>

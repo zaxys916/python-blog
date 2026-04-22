@@ -8,9 +8,9 @@ let slug = 'your-article-slug'; // TODO: 从 URL 解析或手动输入
 if (!slug) slug = new URL(Astro.url).pathname.replace(/^\//, '').replace(/\/$/, '');
 
 // 确保没有冲突的 slug
-const existing = posts.find(p => p.slug === slug);
+const existing = posts.find(p => p.id === slug);
 if (existing) {
-    Astro.render.redirect(`/blog/${existing.slug}`, true);
+    Astro.render.redirect(`/blog/${existing.id}`, true);
 }
 ---
 
