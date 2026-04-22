@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
+    base: '/python-blog/',
     output: 'static',
 
     image: {

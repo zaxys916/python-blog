@@ -3,6 +3,7 @@ import Footer from '../components/Footer.astro';
 
 const title = Astro.props.title || 'Ilight 学习笔记';
 const description = Astro.props.description || '记录学习过程中的技术与思考';
+const isProd = import.meta.env?.PROD;
 ---
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@ const description = Astro.props.description || '记录学习过程中的技术�
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
+    {isProd && <base href="/python-blog/" />}
     <title>{title}</title>
     {Astro.props.description && <meta name="description" content={description} />}
     

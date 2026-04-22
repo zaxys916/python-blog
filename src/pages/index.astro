@@ -1,12 +1,14 @@
 ---
 // 首页
 import BlogList from '../components/BlogList.astro';
+const isProd = import.meta.env?.PROD;
 ---
 
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.svg" />
+    <base href={isProd ? '/python-blog/' : '/'} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ilight 学习笔记</title>
 </head>
