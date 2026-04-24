@@ -1,6 +1,5 @@
 ---
 export const prerender = true;
-
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
@@ -20,7 +19,6 @@ export async function getStaticPaths() {
 }
 
 const { post, prevPost, nextPost } = Astro.props;
-const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title}>
@@ -68,7 +66,7 @@ const { Content } = await render(post);
       </div>
     </header>
 
-    <Content />
+    {render(post)};
 
     <!-- Giscus -->
     <section id="comments" style={{ marginTop: '3rem' }}>

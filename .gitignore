@@ -1,6 +1,9 @@
 # build output
-dist/
-.astro/
+/dist/
+/.astro/
+
+# deploy for gh-pages branch only
+!dist/ !.astro/@(html|assets|content)
 
 # generated types
 *.tsbuildinfo

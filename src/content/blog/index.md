@@ -1,8 +1,8 @@
 ---
 title: 数据科学入门
-slug: data-science
+id: index
 date: 2026-04-21
-tags: [Python，数据分析，pandas]
+tags: [Python, 数据分析，pandas]
 ---
 
 # 数据科学入门
